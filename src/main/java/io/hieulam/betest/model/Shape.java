@@ -1,4 +1,11 @@
 package io.hieulam.betest.model;
 
-public class Shape {
+import java.util.List;
+
+public interface Shape {
+    void draw();
+    long getArea();
+    List<ShapeCategory> getCategories();
+
+
 }
