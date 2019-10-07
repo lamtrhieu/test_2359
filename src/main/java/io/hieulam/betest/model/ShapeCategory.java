@@ -1,8 +1,19 @@
 package io.hieulam.betest.model;
 
-import java.util.UUID;
+import java.util.List;
 
-public enum ShapeCategory {
+public class ShapeCategory {
+    String name;
+    Category type;
+    List<Attribute> requirements;
 
 
+    enum Category {TRIANGLE, SQUARE, RECTANGLE, PARALLELOGRAM, RHOMBUS, KITE, TRAPEZIUM, CIRCLE, ELLIPSE};
+
+
+    public void test() {
+        ShapeCategory shapeCategory = new ShapeCategory();
+        shapeCategory.type = Category.TRIANGLE;
+
+    }
 }

@@ -6,6 +6,6 @@ public interface Shape {
     void draw();
     long getArea();
     List<ShapeCategory> getCategories();
-
+    List<Attribute> getRequirements();
 
 }
