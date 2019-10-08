@@ -3,9 +3,13 @@ package io.hieulam.betest.model;
 public class Attribute {
     private String name;
     private String unit;
-    private long value;
+    private String value;
 
-    public Attribute(String name, String unit, long value) {
+    public Attribute() {
+
+    }
+
+    public Attribute(String name, String unit, String value) {
         this.name = name;
         this.unit = unit;
         this.value = value;
@@ -14,11 +18,11 @@ public class Attribute {
     public Attribute(String name, String unit) {
         this.name = name;
         this.unit = unit;
-        this.value = 0;
+        this.value = "0";
     }
 
 
-    public long getValue() {
+    public String getValue() {
         return value;
     }
 
@@ -38,7 +42,7 @@ public class Attribute {
         this.unit = unit;
     }
 
-    public void setValue(long value) {
+    public void setValue(String value) {
         this.value = value;
     }
 }

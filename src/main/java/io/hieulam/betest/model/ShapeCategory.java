@@ -5,7 +5,6 @@ import java.util.Locale;
 
 public class ShapeCategory {
     String name;
-    String type;
     List<Attribute> requirements;
 
     public String getName() {
@@ -14,14 +13,6 @@ public class ShapeCategory {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public String getType() {
-        return type;
-    }
-
-    public void setType(String type) {
-        this.type = type;
     }
 
     public List<Attribute> getRequirements() {

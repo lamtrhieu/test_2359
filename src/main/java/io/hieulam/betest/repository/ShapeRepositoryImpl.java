@@ -3,7 +3,6 @@ package io.hieulam.betest.repository;
 import io.hieulam.betest.model.Attribute;
 import io.hieulam.betest.model.Shape;
 import io.hieulam.betest.model.ShapeCategory;
-import io.hieulam.betest.service.ShapeService;
 import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
@@ -27,11 +26,10 @@ public class ShapeRepositoryImpl implements ShapeRepository {
 
         ShapeCategory category = new ShapeCategory();
         category.setName("TRIANGLE");
-        category.setType("TRIANGLE");
 
-        Attribute attribute1 = new Attribute("size1", "cm", "0");
-        Attribute attribute2 = new Attribute("size2", "cm", "0");
-        Attribute attribute3 = new Attribute("size3", "cm", "0");
+        Attribute attribute1 = new Attribute("size1", "cm");
+        Attribute attribute2 = new Attribute("size2", "cm");
+        Attribute attribute3 = new Attribute("size3", "cm");
 
         List<Attribute> attributes = Arrays.asList(attribute1, attribute2, attribute3);
 

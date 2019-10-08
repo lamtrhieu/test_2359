@@ -3,10 +3,10 @@ package io.hieulam.betest.model;
 import java.util.List;
 import java.util.UUID;
 
-public class Triangle extends Shape {
+public class Rectangle extends Shape {
 
     public String draw() {
-        String url = "http://service.com/triangle" + UUID.randomUUID();
+        String url = "http://service.com/square" + UUID.randomUUID();
         setShapeURL(url);
 
         return url;
@@ -18,4 +18,5 @@ public class Triangle extends Shape {
 
         return width*length;
     }
+
 }
