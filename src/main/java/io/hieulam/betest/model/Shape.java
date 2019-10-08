@@ -9,3 +9,4 @@ public interface Shape {
     List<Attribute> getRequirements();
 
 }
+
