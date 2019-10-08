@@ -7,6 +7,12 @@ public class ShapeCategory {
     private String name;
     List<Attribute> requirements;
 
+    public ShapeCategory(String category, List<Attribute> requirements) {
+        this.name = category;
+        this.requirements = requirements;
+
+    }
+
     public String getName() {
         return name;
     }

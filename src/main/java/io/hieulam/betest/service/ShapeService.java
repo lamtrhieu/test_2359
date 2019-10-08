@@ -1,6 +1,6 @@
 package io.hieulam.betest.service;
 
-import io.hieulam.betest.model.Shape;
+import io.hieulam.betest.model.shape.Shape;
 import io.hieulam.betest.model.ShapeCategory;
 import io.hieulam.betest.model.ShapeRequest;
 

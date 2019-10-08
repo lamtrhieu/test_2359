@@ -1,7 +1,7 @@
 package io.hieulam.betest.repository;
 
 import io.hieulam.betest.model.ShapeCategory;
-import io.hieulam.betest.model.Shape;
+import io.hieulam.betest.model.shape.Shape;
 
 import java.util.List;
 

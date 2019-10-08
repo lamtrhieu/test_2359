@@ -1,6 +1,10 @@
 package io.hieulam.betest.service;
 
 import io.hieulam.betest.model.*;
+import io.hieulam.betest.model.shape.Rectangle;
+import io.hieulam.betest.model.shape.Shape;
+import io.hieulam.betest.model.shape.Square;
+import io.hieulam.betest.model.shape.Triangle;
 import io.hieulam.betest.repository.ShapeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -29,16 +33,25 @@ public class ShapeServiceImpl implements ShapeService {
         return shape;
     }
 
-    private Shape createShapeFromType(String type) {
-        Shape shape = null;
-        if ("TRIANGLE".equals(type)) {
-            shape = new Square();
+    private Shape createShapeFromType(String category) {
+        Shape result = null;
 
-        } else if ("SQUARE".equals(type)) {
-            shape = new Rectangle();
+        Shape.Category enumCategory = Shape.Category.valueOf(category);
+
+        switch (enumCategory) {
+            case TRIANGLE:
+                result = new Triangle();
+                break;
+            case SQUARE:
+                result = new Square();
+                break;
+            case RECTANGLE:
+                result = new Rectangle();
+                break;
+
         }
 
-        return shape;
+        return result;
     }
 
     @Override
