@@ -6,8 +6,8 @@ import io.hieulam.betest.model.Shape;
 import java.util.List;
 
 public interface ShapeRepository {
-    public List<ShapeCategory> getAllShapeCategories();
-    public Shape createShape();
-    public Shape saveShape();
-    public List<Shape> getShapes();
+    List<ShapeCategory> getAllShapeCategories();
+    //Shape createShape();
+    Shape saveShape(Shape shape);
+    List<Shape> getShapes();
 }

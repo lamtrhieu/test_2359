@@ -10,7 +10,7 @@ import java.util.List;
 public interface ShapeService {
     List<ShapeCategory> listShapeCategories();
     Shape submitShape(ShapeRequest request);
-    Shape saveShape();
-    Shape listSaveShapes();
+    Shape saveShape(Shape shape);
+    List<Shape> listSaveShapes();
 
 }

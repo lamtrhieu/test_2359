@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@RestController
+@RestController("/api/v1")
 public class ShapeController {
 
     @Autowired
@@ -32,15 +32,16 @@ public class ShapeController {
         return shape;
     }
 
-    @RequestMapping("/shapes")
-    Shape saveShape() {
-        System.out.println("I will save the shape here.");
-        return null;
+    @RequestMapping(value = "/shapes", method = RequestMethod.POST)
+    @ResponseBody
+    public Shape saveShape(@RequestBody Shape shape) {
+        Shape savedShape = shapeService.saveShape(shape);
+        return savedShape;
     }
 
-    @RequestMapping("/shapes/saveShapes")
-    Shape listSaveShapes() {
-        System.out.println("I will list all the save shape.");
-        return null;
+    @RequestMapping(value = "/shapes/saved-shapes", method = RequestMethod.GET)
+    @ResponseBody
+    public List<Shape> listSaveShapes() {
+        return shapeService.listSaveShapes();
     }
 }

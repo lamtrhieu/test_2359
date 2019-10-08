@@ -4,9 +4,9 @@ import java.util.List;
 
 public class Shape {
 
-    public void setArea(long area) {
-        this.area = area;
-    }
+    protected List<Attribute> attributes;
+    protected long area;
+    protected String shapeURL;
 
     public String getShapeURL() {
         return shapeURL;
@@ -16,10 +16,6 @@ public class Shape {
         this.shapeURL = shapeURL;
     }
 
-    private long area;
-
-    private String shapeURL;
-
     public List<Attribute> getAttributes() {
         return attributes;
     }
@@ -28,14 +24,16 @@ public class Shape {
         this.attributes = attributes;
     }
 
-    protected List<Attribute> attributes;
-
     public String draw() {
         return null;
     }
 
     public long getArea() {
-        return 0;
+        return area;
+    }
+
+    public void setArea(long area) {
+        this.area = area;
     }
 
     protected long getAttributeValue(String name) {
@@ -49,10 +47,5 @@ public class Shape {
         return result;
     }
 
-
-
-//    String draw();
-//    long getArea();
-//    List<ShapeCategory> getShapeCategories();
 }
 

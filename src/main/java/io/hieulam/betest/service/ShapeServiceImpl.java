@@ -42,12 +42,13 @@ public class ShapeServiceImpl implements ShapeService {
     }
 
     @Override
-    public Shape saveShape() {
-        return null;
+    public Shape saveShape(Shape shape) {
+        Shape savedShape = shapeRepository.saveShape(shape);
+        return savedShape;
     }
 
     @Override
-    public Shape listSaveShapes() {
-        return null;
+    public List<Shape> listSaveShapes() {
+        return shapeRepository.getShapes();
     }
 }

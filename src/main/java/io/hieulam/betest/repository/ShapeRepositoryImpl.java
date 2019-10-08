@@ -5,9 +5,8 @@ import io.hieulam.betest.model.Shape;
 import io.hieulam.betest.model.ShapeCategory;
 import org.springframework.stereotype.Repository;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
+import java.util.stream.Collectors;
 
 @Repository
 public class ShapeRepositoryImpl implements ShapeRepository {
@@ -16,8 +15,11 @@ public class ShapeRepositoryImpl implements ShapeRepository {
 
     enum Category {TRIANGLE, SQUARE, RECTANGLE, PARALLELOGRAM, RHOMBUS, KITE, TRAPEZIUM, CIRCLE, ELLIPSE};
 
+    private Map<UUID, Shape> savedShapes;
+
     public ShapeRepositoryImpl() {
         shapeCategories = new ArrayList<>();
+        savedShapes = new HashMap<>();
 
         insertDefaultCategory(shapeCategories);
     }
@@ -46,18 +48,21 @@ public class ShapeRepositoryImpl implements ShapeRepository {
         return this.shapeCategories;
     }
 
-    @Override
-    public Shape createShape() {
-        return null;
-    }
+//    @Override
+//    public Shape createShape() {
+//        return null;
+//    }
 
     @Override
-    public Shape saveShape() {
-        return null;
+    public Shape saveShape(Shape shape) {
+        UUID newId = UUID.randomUUID();
+
+        savedShapes.put(newId, shape);
+        return shape;
     }
 
     @Override
     public List<Shape> getShapes() {
-        return null;
+        return savedShapes.values().stream().collect(Collectors.toList());
     }
 }
