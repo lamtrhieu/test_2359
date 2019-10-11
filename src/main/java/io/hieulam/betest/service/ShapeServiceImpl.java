@@ -64,4 +64,9 @@ public class ShapeServiceImpl implements ShapeService {
     public List<Shape> listSaveShapes() {
         return shapeRepository.getShapes();
     }
+
+    @Override
+    public ShapeCategory addShapeCategory(ShapeCategory shapeCategory) {
+        return null;
+    }
 }

@@ -5,6 +5,7 @@ import io.hieulam.betest.model.ShapeCategory;
 import io.hieulam.betest.model.ShapeRequest;
 import io.hieulam.betest.service.ShapeService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -21,6 +22,7 @@ public class ShapeController {
             method = RequestMethod.GET,
             produces = "application/json")
     @ResponseBody
+    @PreAuthorize("hasRole('ROLE_USER')")
     public List<ShapeCategory> listShapeCategories() {
         return Shape.getAllShapeCategories();
     }
@@ -43,5 +45,14 @@ public class ShapeController {
     @ResponseBody
     public List<Shape> listSaveShapes() {
         return shapeService.listSaveShapes();
+    }
+
+    @RequestMapping
+    @ResponseBody
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    public ShapeCategory addShapeCategory(@RequestBody ShapeCategory shapeCategory) {
+        ShapeCategory result = shapeService.addShapeCategory(shapeCategory);
+
+        return result;
     }
 }

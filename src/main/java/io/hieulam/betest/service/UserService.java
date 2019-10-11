@@ -5,9 +5,18 @@ import io.hieulam.betest.model.User;
 import java.util.List;
 
 public interface UserService {
-    User save(User user);
+    User findUserByUsername(String username);
 
-    List<User> findAll();
+    User createAdmin(User user);
 
-    void delete(long id);
+    void deleteAdmin(String name);
+
+    User createUser(User user);
+
+    List<User> findAllUsers();
+
+//
+//    User createAdmin();
+//
+//    User deleteAdmin();
 }

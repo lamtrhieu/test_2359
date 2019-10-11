@@ -3,12 +3,24 @@ package io.hieulam.betest.model;
 public class User {
 
 
+    private int id;
     private String username;
     private String password;
+    private int age;
+    private String school;
+    private String address;
 
     public User(String username, String password) {
         this.username = username;
         this.password = password;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getPassword() {

@@ -13,4 +13,5 @@ public interface ShapeService {
     Shape saveShape(Shape shape);
     List<Shape> listSaveShapes();
 
+    ShapeCategory addShapeCategory(ShapeCategory shapeCategory);
 }
