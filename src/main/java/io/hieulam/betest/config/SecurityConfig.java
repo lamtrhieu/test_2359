@@ -87,8 +87,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     }
 
     public static void main(String[] args) {
-        System.out.println(new BCryptPasswordEncoder().encode("hendi-secret"));
-        ;
+        System.out.println(new BCryptPasswordEncoder().encode("2359-secret"));
+
     }
 
     @Bean

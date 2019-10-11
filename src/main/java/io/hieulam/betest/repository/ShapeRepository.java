@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface ShapeRepository {
     List<ShapeCategory> getAllShapeCategories();
-    //Shape createShape();
     Shape saveShape(Shape shape);
     List<Shape> getShapes();
+    void addShapeCategory(ShapeCategory shapeCategory);
 }

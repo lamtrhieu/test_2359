@@ -4,13 +4,22 @@ import java.util.List;
 import java.util.Locale;
 
 public class ShapeCategory {
-    private String name;
     List<Attribute> requirements;
+    private String name;
+    private String areaFormula;
 
     public ShapeCategory(String category, List<Attribute> requirements) {
         this.name = category;
         this.requirements = requirements;
 
+    }
+
+    public String getAreaFormula() {
+        return areaFormula;
+    }
+
+    public void setAreaFormula(String areaFormula) {
+        this.areaFormula = areaFormula;
     }
 
     public String getName() {

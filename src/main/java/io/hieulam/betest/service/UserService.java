@@ -15,8 +15,4 @@ public interface UserService {
 
     List<User> findAllUsers();
 
-//
-//    User createAdmin();
-//
-//    User deleteAdmin();
 }

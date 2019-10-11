@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/user-management/v1")
+@RequestMapping("/api/v1")
 public class UserController {
 
     @Autowired
@@ -30,17 +30,17 @@ public class UserController {
         return user;
     }
 
-    @DeleteMapping("/logout")
-    @PreAuthorize("hasRole('ROLE_USER')")
-    public void logout(@RequestBody String token) {
-        OAuth2AccessToken access = tokenStore.readAccessToken(token);
-        OAuth2RefreshToken refreshToken = access.getRefreshToken();
+//    @DeleteMapping("/logout")
+//    @PreAuthorize("hasRole('ROLE_USER')")
+//    public void logout(@RequestBody String token) {
+//        OAuth2AccessToken access = tokenStore.readAccessToken(token);
+//        OAuth2RefreshToken refreshToken = access.getRefreshToken();
+//
+//        tokenStore.removeAccessToken(access);
+//        tokenStore.removeRefreshToken(refreshToken);
+//    }
 
-        tokenStore.removeAccessToken(access);
-        tokenStore.removeRefreshToken(refreshToken);
-    }
-
-    @PostMapping("/users")
+    @PostMapping("/users/register")
     public User register(@RequestBody User user) {
         return userService.createUser(user);
     }

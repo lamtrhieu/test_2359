@@ -8,10 +8,9 @@ import java.util.List;
 
 
 public interface ShapeService {
-    List<ShapeCategory> listShapeCategories();
     Shape submitShape(ShapeRequest request);
     Shape saveShape(Shape shape);
     List<Shape> listSaveShapes();
-
-    ShapeCategory addShapeCategory(ShapeCategory shapeCategory);
+    void addShapeCategory(ShapeCategory shapeCategory);
+    List<ShapeCategory> getAllShapeCategories();
 }

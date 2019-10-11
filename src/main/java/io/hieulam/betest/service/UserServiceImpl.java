@@ -30,6 +30,10 @@ public class UserServiceImpl implements UserService, UserDetailsService {
 
         User seedAdmin = new User(SUPER_ADMIN_NAME, encryptPassword(SUPER_ADMIN_PASS));
         adminMap.put(SUPER_ADMIN_NAME, seedAdmin);
+
+        User seedUser = new User("hieu", encryptPassword("123456"));
+        userMap.put("hieu", seedUser);
+
     }
 
     public String encryptPassword(String rawPass) {
@@ -39,21 +43,6 @@ public class UserServiceImpl implements UserService, UserDetailsService {
         return encode;
     }
 
-//    @Override
-//    public User save(User user) {
-//        return null;
-//    }
-//
-//    @Override
-//    public List<User> findAll() {
-//        return null;
-//    }
-//
-//    @Override
-//    public void delete(long id) {
-//
-//
-//    }
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
@@ -68,11 +57,6 @@ public class UserServiceImpl implements UserService, UserDetailsService {
         } else {
             throw new UsernameNotFoundException("Invalid username or password.");
         }
-
-//        User user = userMap.get(username);
-//        userMap.values().stream().filter(user -> user.getUsername() == username).count();
-
-//        return new org.springframework.security.core.userdetails.User(user.getUsername(), user.getPassword(), getAuthority());
     }
 
     private boolean isUser(String userName) {
@@ -82,19 +66,6 @@ public class UserServiceImpl implements UserService, UserDetailsService {
     private boolean isAdmin(String adminName) {
         return adminMap.containsKey(adminName);
     }
-
-
-//    public UserDetails loadUserByUsername(String userId) throws UsernameNotFoundException {
-//        User user = userDao.findByUsername(userId);
-//        if (user == null) {
-//            throw new UsernameNotFoundException("Invalid username or password.");
-//        }
-//        return new org.springframework.security.core.userdetails.User(String.valueOf(user.getId()), user.getPassword(), getAuthority());
-//    }
-
-//    private List<SimpleGrantedAuthority> getAuthority() {
-//        return Arrays.asList(new SimpleGrantedAuthority("ROLE_ADMIN"), new SimpleGrantedAuthority("ROLE_USER"));
-//    }
 
     @Override
     public User findUserByUsername(String username) {

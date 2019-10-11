@@ -78,18 +78,7 @@ public class Shape {
         return null;
     }
 
-    public static List<ShapeCategory> getAllShapeCategories() {
-        List<Shape> allShapes = Arrays.asList(new Triangle(), new Rectangle(), new Square());
 
-        return allShapes.stream().map(Shape::toShapeCategory).collect(Collectors.toList());
-    }
-
-    private static ShapeCategory toShapeCategory(Shape shape) {
-        String category = shape.getCategory();
-        List<Attribute> requirements = shape.getRequirements();
-
-        return new ShapeCategory(category, requirements);
-    }
 
 }
 

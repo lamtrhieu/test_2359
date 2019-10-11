@@ -9,7 +9,7 @@ import org.springframework.security.oauth2.provider.token.TokenStore;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/api/admin-management/v1")
+@RequestMapping("/api/v1")
 public class AdminController {
 
     @Autowired
