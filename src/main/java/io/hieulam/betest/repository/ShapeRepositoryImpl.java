@@ -2,10 +2,7 @@ package io.hieulam.betest.repository;
 
 import io.hieulam.betest.model.Attribute;
 import io.hieulam.betest.model.ShapeCategory;
-import io.hieulam.betest.model.shape.Rectangle;
-import io.hieulam.betest.model.shape.Shape;
-import io.hieulam.betest.model.shape.Square;
-import io.hieulam.betest.model.shape.Triangle;
+import io.hieulam.betest.model.shape.*;
 import org.springframework.stereotype.Repository;
 
 import java.util.*;
@@ -26,7 +23,7 @@ public class ShapeRepositoryImpl implements ShapeRepository {
     }
 
     private void insertDefaultShapeCategories() {
-        List<Shape> allShapes = Arrays.asList(new Triangle(), new Rectangle(), new Square());
+        List<Shape> allShapes = Arrays.asList(new Triangle(), new Rectangle(), new Square(), new Parallelogram(), new Rhombus());
 
         for (Shape shape : allShapes) {
             ShapeCategory category = toShapeCategory(shape);

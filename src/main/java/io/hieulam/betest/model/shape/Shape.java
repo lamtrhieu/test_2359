@@ -98,5 +98,4 @@ public class Shape {
     }
 
     public enum Category {TRIANGLE, SQUARE, RECTANGLE, PARALLELOGRAM, RHOMBUS, KITE, TRAPEZIUM, CIRCLE, ELLIPSE}
-
 }
