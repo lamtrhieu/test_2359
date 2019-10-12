@@ -48,7 +48,7 @@ class ShapeServiceImplTest {
     }
 
     @Test
-    void shouldSubmitShape() {
+    void shouldSubmitSquareShape() {
         given(shapeRepository.isShapeCategoryExist("SQUARE")).willReturn(true);
 
         Attribute attribute = new Attribute("size", "cm");
@@ -56,9 +56,51 @@ class ShapeServiceImplTest {
         List<Attribute> attributes = Arrays.asList(attribute);
 
         Shape result = shapeService.submitShape(new ShapeCategory("SQUARE", attributes));
-        assertThat(result.getShapeURL()).startsWith("http://service.com/square/");
+        assertThat(result.getShapeURL()).startsWith("http://service.com/SQUARE/");
         assertThat(result.getArea()).isEqualTo(100);
     }
+
+    @Test
+    void shouldSubmitTriangleShape() {
+        given(shapeRepository.isShapeCategoryExist("TRIANGLE")).willReturn(true);
+
+        Attribute base = new Attribute("size", "cm");
+        base.setValue("10");
+        Attribute high = new Attribute("size", "cm");
+        List<Attribute> attributes = Arrays.asList(attribute);
+
+        Shape result = shapeService.submitShape(new ShapeCategory("TRIANGLE", attributes));
+        assertThat(result.getShapeURL()).startsWith("http://service.com/SQUARE/");
+        assertThat(result.getArea()).isEqualTo(100);
+    }
+
+    @Test
+    void shouldSubmitRectangleShape() {
+        given(shapeRepository.isShapeCategoryExist("RECTANGLE")).willReturn(true);
+
+        Attribute attribute = new Attribute("size", "cm");
+        attribute.setValue("10");
+        List<Attribute> attributes = Arrays.asList(attribute);
+
+        Shape result = shapeService.submitShape(new ShapeCategory("RECTANGLE", attributes));
+        assertThat(result.getShapeURL()).startsWith("http://service.com/SQUARE/");
+        assertThat(result.getArea()).isEqualTo(100);
+    }
+
+    @Test
+    void shouldSubmitCustomShape() {
+        given(shapeRepository.isShapeCategoryExist("Hieu")).willReturn(true);
+
+        Attribute attribute = new Attribute("size", "cm");
+        attribute.setValue("10");
+        List<Attribute> attributes = Arrays.asList(attribute);
+
+        Shape result = shapeService.submitShape(new ShapeCategory("Hieu", attributes));
+        assertThat(result.getShapeURL()).startsWith("http://service.com/SQUARE/");
+        assertThat(result.getArea()).isEqualTo(100);
+    }
+
+
 
     @Test
     void shouldSaveShape() {
@@ -100,4 +142,40 @@ class ShapeServiceImplTest {
 
     }
 
+    @Test
+    void shouldListSaveShapesForKid() {
+        List<Shape> shapes = new ArrayList<>();
+
+        given(shapeRepository.selectSaveShapesForKid("test")).willReturn(shapes);
+
+
+        List<Shape> result = shapeService.listSaveShapesForKid("test");
+        assertThat(result).isEqualTo(shapes);
+    }
+
+    @Test
+    void shouldCreateShapeForKid() {
+        Shape shape = new Shape();
+
+        given(shapeRepository.insertShapeForKid("test", shape)).willReturn(shape);
+        Shape result = shapeService.createShapeForKid("test", shape);
+
+        assertThat(result).isEqualTo(shape);
+    }
+
+    @Test
+    void shouldUpdateShapeForKid() {
+        Shape shape = new Shape();
+        given(shapeRepository.updateShapeForKid("test", shape, "1234")).willReturn(shape);
+
+        Shape result = shapeService.updateShapeForKid("test", shape, "1234");
+        assertThat(result).isEqualTo(shape);
+    }
+
+    @Test
+    void shouldDeleteShapeForKid() {
+        shapeService.deleteShapeForKid("test", "1234");
+
+        verify(shapeRepository, times(1)).deleteShapeForKid("test", "1234");
+    }
 }

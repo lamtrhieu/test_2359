@@ -114,7 +114,7 @@ class UserServiceImplTest {
         // then
         assertThat(thrown)
                 .isInstanceOf(UsernameNotFoundException.class)
-                .hasMessageContaining("Cannot find admin with username: notexist36");
+                .hasMessageContaining("Cannot find admin with username: notexist");
     }
 
 

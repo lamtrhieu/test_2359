@@ -56,16 +56,16 @@ public class AdminController {
         return shapeService.createShapeForKid(name, shape);
     }
 
-    @PutMapping("/users/{name}/shapes")
+    @PutMapping("/users/{name}/shapes/{id}")
     @PreAuthorize("hasRole('ROLE_ADMIN')")
-    public Shape updateShapeForKid(@PathVariable String name, @RequestBody Shape shape) {
-        return shapeService.updateShapeForKid(name, shape);
+    public Shape updateShapeForKid(@PathVariable String name, @RequestBody Shape shape, @PathVariable String id) {
+        return shapeService.updateShapeForKid(name, shape, id);
     }
 
     @DeleteMapping("/users/{name}/shapes/{id}")
     @PreAuthorize("hasRole('ROLE_ADMIN')")
     public void deleteShapeForKid(@PathVariable String name, @PathVariable String id) {
-        return shapeService.deleteShapeForKid(name, id);
+        shapeService.deleteShapeForKid(name, id);
     }
-    
+
 }

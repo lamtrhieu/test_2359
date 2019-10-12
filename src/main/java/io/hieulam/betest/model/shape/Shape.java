@@ -15,6 +15,15 @@ public class Shape {
     protected UUID id;
     protected ShapeCategory shapeCategory;
     List<String> otherCategories;
+    String owner;
+
+    public String getOwner() {
+        return owner;
+    }
+
+    public void setOwner(String owner) {
+        this.owner = owner;
+    }
 
     public ShapeCategory getShapeCategory() {
         return shapeCategory;

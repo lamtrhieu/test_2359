@@ -28,16 +28,6 @@ public class UserController {
         return user;
     }
 
-//    @DeleteMapping("/logout")
-//    @PreAuthorize("hasRole('ROLE_USER')")
-//    public void logout(@RequestBody String token) {
-//        OAuth2AccessToken access = tokenStore.readAccessToken(token);
-//        OAuth2RefreshToken refreshToken = access.getRefreshToken();
-//
-//        tokenStore.removeAccessToken(access);
-//        tokenStore.removeRefreshToken(refreshToken);
-//    }
-
     @PostMapping("/users/register")
     public User register(@RequestBody User user) {
         return userService.createUser(user);

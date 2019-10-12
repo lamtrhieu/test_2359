@@ -1,7 +1,6 @@
 package io.hieulam.betest.model;
 
 import java.util.List;
-import java.util.Locale;
 
 public class ShapeCategory {
     List<Attribute> requirements;

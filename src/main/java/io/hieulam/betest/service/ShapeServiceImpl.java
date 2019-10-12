@@ -78,4 +78,24 @@ public class ShapeServiceImpl implements ShapeService {
     public List<ShapeCategory> getAllShapeCategories() {
         return shapeRepository.getAllShapeCategories();
     }
+
+    @Override
+    public List<Shape> listSaveShapesForKid(String name) {
+        return shapeRepository.selectSaveShapesForKid(name);
+    }
+
+    @Override
+    public Shape createShapeForKid(String name, Shape shape) {
+        return shapeRepository.insertShapeForKid(name, shape);
+    }
+
+    @Override
+    public Shape updateShapeForKid(String name, Shape shape, String id) {
+        return shapeRepository.updateShapeForKid(name, shape, id);
+    }
+
+    @Override
+    public void deleteShapeForKid(String name, String id) {
+        shapeRepository.deleteShapeForKid(name, id);
+    }
 }

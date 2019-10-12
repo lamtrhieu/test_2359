@@ -12,4 +12,12 @@ public interface ShapeRepository {
     void addShapeCategory(ShapeCategory shapeCategory);
 
     boolean isShapeCategoryExist(String category);
+
+    List<Shape> selectSaveShapesForKid(String name);
+
+    Shape insertShapeForKid(String name, Shape shape);
+
+    Shape updateShapeForKid(String name, Shape shape, String id);
+
+    void deleteShapeForKid(String name, String id);
 }

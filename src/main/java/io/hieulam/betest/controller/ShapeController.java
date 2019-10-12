@@ -1,7 +1,6 @@
 package io.hieulam.betest.controller;
 
 import io.hieulam.betest.model.ShapeCategory;
-import io.hieulam.betest.model.ShapeRequest;
 import io.hieulam.betest.model.shape.Shape;
 import io.hieulam.betest.service.ShapeService;
 import org.springframework.beans.factory.annotation.Autowired;
