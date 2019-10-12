@@ -8,14 +8,6 @@ public class CustomShape extends Shape {
         return shapeCategory.getName();
     }
 
-
-    public String draw() {
-        String url = "http://service.com/" + getCategory() + UUID.randomUUID();
-        setShapeURL(url);
-
-        return url;
-    }
-
     public long calculateArea() {
         String formula = getShapeCategory().getAreaFormula();
         //Using a expression evaluator like this one http://mathparser.org/ to calculate;

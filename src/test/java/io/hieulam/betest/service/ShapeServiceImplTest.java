@@ -64,26 +64,29 @@ class ShapeServiceImplTest {
     void shouldSubmitTriangleShape() {
         given(shapeRepository.isShapeCategoryExist("TRIANGLE")).willReturn(true);
 
-        Attribute base = new Attribute("size", "cm");
+        Attribute base = new Attribute("base", "cm");
         base.setValue("10");
-        Attribute high = new Attribute("size", "cm");
-        List<Attribute> attributes = Arrays.asList(attribute);
+        Attribute height = new Attribute("height", "cm");
+        height.setValue("10");
+        List<Attribute> attributes = Arrays.asList(base, height);
 
         Shape result = shapeService.submitShape(new ShapeCategory("TRIANGLE", attributes));
-        assertThat(result.getShapeURL()).startsWith("http://service.com/SQUARE/");
-        assertThat(result.getArea()).isEqualTo(100);
+        assertThat(result.getShapeURL()).startsWith("http://service.com/TRIANGLE/");
+        assertThat(result.getArea()).isEqualTo(50);
     }
 
     @Test
     void shouldSubmitRectangleShape() {
         given(shapeRepository.isShapeCategoryExist("RECTANGLE")).willReturn(true);
 
-        Attribute attribute = new Attribute("size", "cm");
-        attribute.setValue("10");
-        List<Attribute> attributes = Arrays.asList(attribute);
+        Attribute width = new Attribute("width", "cm");
+        width.setValue("10");
+        Attribute length = new Attribute("length", "cm");
+        length.setValue("10");
+        List<Attribute> attributes = Arrays.asList(width, length);
 
         Shape result = shapeService.submitShape(new ShapeCategory("RECTANGLE", attributes));
-        assertThat(result.getShapeURL()).startsWith("http://service.com/SQUARE/");
+        assertThat(result.getShapeURL()).startsWith("http://service.com/RECTANGLE/");
         assertThat(result.getArea()).isEqualTo(100);
     }
 
@@ -96,8 +99,8 @@ class ShapeServiceImplTest {
         List<Attribute> attributes = Arrays.asList(attribute);
 
         Shape result = shapeService.submitShape(new ShapeCategory("Hieu", attributes));
-        assertThat(result.getShapeURL()).startsWith("http://service.com/SQUARE/");
-        assertThat(result.getArea()).isEqualTo(100);
+        assertThat(result.getShapeURL()).startsWith("http://service.com/Hieu/");
+        //assertThat(result.getArea()).isEqualTo(0);
     }
 
 

@@ -38,16 +38,14 @@ public class ShapeServiceImpl implements ShapeService {
     private Shape createShapeFromType(String category) {
         Shape result = null;
 
-        Shape.Category enumCategory = Shape.Category.valueOf(category);
-
-        switch (enumCategory) {
-            case TRIANGLE:
+        switch (category) {
+            case "TRIANGLE":
                 result = new Triangle();
                 break;
-            case SQUARE:
+            case "SQUARE":
                 result = new Square();
                 break;
-            case RECTANGLE:
+            case "RECTANGLE":
                 result = new Rectangle();
                 break;
             default:

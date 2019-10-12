@@ -4,7 +4,6 @@ import io.hieulam.betest.model.Attribute;
 
 import java.util.Arrays;
 import java.util.List;
-import java.util.UUID;
 
 public class Triangle extends Shape {
 
@@ -16,24 +15,21 @@ public class Triangle extends Shape {
     }
 
     @Override
-    public String draw() {
-        this.shapeURL = "http://service.com/triangle/" + UUID.randomUUID();
-
-        return this.shapeURL;
-    }
-
-    @Override
-    public List<Attribute> getRequirements() {
-        List<Attribute> requirements = Arrays.asList(new Attribute("size", "cm"));
-        return requirements;
-    }
-
-    @Override
     public long calculateArea() {
         long base = getAttributeValue("base");
         long height = getAttributeValue("height");
         this.area = (base*height)/2;
 
         return this.area;
+    }
+
+    @Override
+    public List<Attribute> getRequirements() {
+        Attribute base = new Attribute("base", "cm");
+        Attribute height = new Attribute("height", "cm");
+        Attribute angle = new Attribute("angle", "degree");
+
+        List<Attribute> requirements = Arrays.asList(base, height, angle);
+        return requirements;
     }
 }
