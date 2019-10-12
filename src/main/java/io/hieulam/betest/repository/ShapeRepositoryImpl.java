@@ -14,21 +14,26 @@ import java.util.stream.Collectors;
 @Repository
 public class ShapeRepositoryImpl implements ShapeRepository {
 
-    private List<ShapeCategory> shapeCategories;
+    //private List<ShapeCategory> shapeCategories;
+    Map<String, ShapeCategory> shapeCategories;
 
     private Map<UUID, Shape> savedShapes;
 
     public ShapeRepositoryImpl() {
-        shapeCategories = new ArrayList<>();
+        shapeCategories = new HashMap<>();
         savedShapes = new HashMap<>();
 
-        shapeCategories = insertDefaultShapeCategories();
+        insertDefaultShapeCategories();
     }
 
-    public List<ShapeCategory> insertDefaultShapeCategories() {
+    private void insertDefaultShapeCategories() {
         List<Shape> allShapes = Arrays.asList(new Triangle(), new Rectangle(), new Square());
 
-        return allShapes.stream().map(this::toShapeCategory).collect(Collectors.toList());
+        for (Shape shape : allShapes) {
+            ShapeCategory category = toShapeCategory(shape);
+            shapeCategories.put(shape.getCategory(), category);
+        }
+
     }
 
     private ShapeCategory toShapeCategory(Shape shape) {
@@ -40,7 +45,7 @@ public class ShapeRepositoryImpl implements ShapeRepository {
 
     @Override
     public List<ShapeCategory> getAllShapeCategories() {
-        return this.shapeCategories;
+        return this.shapeCategories.values().stream().collect(Collectors.toList());
     }
 
     @Override
@@ -60,7 +65,12 @@ public class ShapeRepositoryImpl implements ShapeRepository {
 
     @Override
     public void addShapeCategory(ShapeCategory shapeCategory) {
-        shapeCategories.add(shapeCategory);
+        shapeCategories.put(shapeCategory.getName(), shapeCategory);
+    }
+
+    @Override
+    public boolean isShapeCategoryExist(String category) {
+        return shapeCategories.containsKey(category);
     }
 
 }

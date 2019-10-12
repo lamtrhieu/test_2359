@@ -27,7 +27,7 @@ public class ShapeController {
     @GetMapping("/shapes/submit")
     @ResponseBody
     @PreAuthorize("hasRole('ROLE_USER')")
-    public Shape submitShape(@RequestBody ShapeRequest shapeRequest) {
+    public Shape submitShape(@RequestBody ShapeCategory shapeRequest) {
         Shape shape = shapeService.submitShape(shapeRequest);
         return shape;
     }

@@ -36,7 +36,7 @@ public class UserServiceImpl implements UserService, UserDetailsService {
 
     }
 
-    public String encryptPassword(String rawPass) {
+    private String encryptPassword(String rawPass) {
         BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
         String encode = encoder.encode(rawPass);
 

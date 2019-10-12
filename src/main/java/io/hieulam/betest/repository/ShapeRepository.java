@@ -10,4 +10,6 @@ public interface ShapeRepository {
     Shape saveShape(Shape shape);
     List<Shape> getShapes();
     void addShapeCategory(ShapeCategory shapeCategory);
+
+    boolean isShapeCategoryExist(String category);
 }

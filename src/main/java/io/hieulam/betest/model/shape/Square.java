@@ -11,7 +11,7 @@ public class Square extends Shape {
 
 
     public String draw() {
-        String url = "http://service.com/square" + UUID.randomUUID();
+        String url = "http://service.com/square/" + UUID.randomUUID();
         setShapeURL(url);
 
         return url;

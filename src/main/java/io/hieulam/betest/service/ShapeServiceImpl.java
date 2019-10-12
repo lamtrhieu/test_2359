@@ -1,10 +1,7 @@
 package io.hieulam.betest.service;
 
 import io.hieulam.betest.model.*;
-import io.hieulam.betest.model.shape.Rectangle;
-import io.hieulam.betest.model.shape.Shape;
-import io.hieulam.betest.model.shape.Square;
-import io.hieulam.betest.model.shape.Triangle;
+import io.hieulam.betest.model.shape.*;
 import io.hieulam.betest.repository.ShapeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,18 +14,23 @@ public class ShapeServiceImpl implements ShapeService {
     @Autowired
     ShapeRepository shapeRepository;
 
-    @Override
-    public List<ShapeCategory> listShapeCategories() {
-        return shapeRepository.getAllShapeCategories();
+    public ShapeServiceImpl(ShapeRepository shapeRepository) {
+        this.shapeRepository = shapeRepository;
     }
 
     @Override
-    public Shape submitShape(ShapeRequest request) {
-        Shape shape = createShapeFromType(request.getCategory());
-        shape.setAttributes(request.getRequirements());
+    public Shape submitShape(ShapeCategory request) {
+        String shapeCategory = request.getName();
+
+        if (!shapeRepository.isShapeCategoryExist(shapeCategory)) {
+            throw new RuntimeException("Invalid Shape Category");
+        }
+
+        Shape shape = createShapeFromType(request.getName());
+        shape.setShapeCategory(request);
 
         shape.draw();
-        shape.getArea();
+        shape.calculateArea();
 
         return shape;
     }
@@ -48,7 +50,9 @@ public class ShapeServiceImpl implements ShapeService {
             case RECTANGLE:
                 result = new Rectangle();
                 break;
-
+            default:
+                result = new CustomShape();
+                break;
         }
 
         return result;

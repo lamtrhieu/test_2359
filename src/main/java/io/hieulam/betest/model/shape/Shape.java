@@ -15,12 +15,19 @@ public class Shape {
     protected long area;
     protected String shapeURL;
     protected UUID id;
+    protected  ShapeCategory shapeCategory;
 
-    public enum Category {TRIANGLE, SQUARE, RECTANGLE, PARALLELOGRAM, RHOMBUS, KITE, TRAPEZIUM, CIRCLE, ELLIPSE};
-
-    public UUID getId() {
-        return id;
+    public ShapeCategory getShapeCategory() {
+        return shapeCategory;
     }
+
+    public void setShapeCategory(ShapeCategory shapeCategory) {
+        this.shapeCategory = shapeCategory;
+    }
+
+        public UUID getId() {
+        return id;
+    };
 
     public void setId(UUID id) {
         this.id = id;
@@ -49,6 +56,9 @@ public class Shape {
         return url;
     }
 
+    public long calculateArea() {
+        return 0;
+    }
 
     public long getArea() {
         return area;
@@ -77,6 +87,8 @@ public class Shape {
     public String getCategory() {
         return null;
     }
+
+public enum Category {TRIANGLE, SQUARE, RECTANGLE, PARALLELOGRAM, RHOMBUS, KITE, TRAPEZIUM, CIRCLE, ELLIPSE}
 
 
 
