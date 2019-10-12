@@ -1,21 +1,20 @@
 package io.hieulam.betest.model.shape;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import io.hieulam.betest.model.Attribute;
 import io.hieulam.betest.model.ShapeCategory;
 
-import java.util.Arrays;
 import java.util.List;
 import java.util.UUID;
-import java.util.stream.Collectors;
 
 public class Shape {
 
-    protected List<Attribute> attributes;
     protected long area;
     protected String shapeURL;
     protected UUID id;
-    protected  ShapeCategory shapeCategory;
+    protected ShapeCategory shapeCategory;
+    List<String> otherCategories;
 
     public ShapeCategory getShapeCategory() {
         return shapeCategory;
@@ -25,9 +24,9 @@ public class Shape {
         this.shapeCategory = shapeCategory;
     }
 
-        public UUID getId() {
+    public UUID getId() {
         return id;
-    };
+    }
 
     public void setId(UUID id) {
         this.id = id;
@@ -41,23 +40,10 @@ public class Shape {
         this.shapeURL = shapeURL;
     }
 
-    public List<Attribute> getAttributes() {
-        return attributes;
-    }
-
-    public void setAttributes(List<Attribute> attributes) {
-        this.attributes = attributes;
-    }
-
     public String draw() {
-        String url = "http://service.com/" + this.getCategory() + UUID.randomUUID();
-        setShapeURL(url);
+        this.shapeURL = "http://service.com/" + this.getCategory() + "/" + UUID.randomUUID();
 
-        return url;
-    }
-
-    public long calculateArea() {
-        return 0;
+        return this.shapeURL;
     }
 
     public long getArea() {
@@ -70,7 +56,7 @@ public class Shape {
 
     protected long getAttributeValue(String name) {
         long result = 0;
-        for (Attribute attribute : attributes) {
+        for (Attribute attribute : shapeCategory.getRequirements()) {
             if (attribute.getName().equals(name)) {
                 result = Long.parseLong(attribute.getValue());
                 break;
@@ -79,18 +65,29 @@ public class Shape {
         return result;
     }
 
+    public long calculateArea() {
+        return 0;
+    }
+
+    //These methods need to be overriden in subclasses to provide correct data for each shape category.
+
     @JsonIgnore
     public List<Attribute> getRequirements() {
         return null;
     }
 
     public String getCategory() {
-        return null;
+        return this.shapeCategory.getName();
     }
 
-public enum Category {TRIANGLE, SQUARE, RECTANGLE, PARALLELOGRAM, RHOMBUS, KITE, TRAPEZIUM, CIRCLE, ELLIPSE}
+    public List<String> getOtherCategories() {
+        return this.otherCategories;
+    }
 
+    public void setOtherCategories(List<String> otherCategories) {
+        this.otherCategories = otherCategories;
+    }
 
+    public enum Category {TRIANGLE, SQUARE, RECTANGLE, PARALLELOGRAM, RHOMBUS, KITE, TRAPEZIUM, CIRCLE, ELLIPSE}
 
 }
-

@@ -1,12 +1,16 @@
 package io.hieulam.betest.controller;
 
 import io.hieulam.betest.model.User;
+import io.hieulam.betest.model.shape.Shape;
+import io.hieulam.betest.service.ShapeService;
 import io.hieulam.betest.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.oauth2.common.OAuth2AccessToken;
 import org.springframework.security.oauth2.provider.token.TokenStore;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/v1")
@@ -17,6 +21,9 @@ public class AdminController {
 
     @Autowired
     private TokenStore tokenStore;
+
+    @Autowired
+    private ShapeService shapeService;
 
     @PostMapping("/admins")
     @PreAuthorize("hasRole('ROLE_ADMIN')")
@@ -37,5 +44,28 @@ public class AdminController {
         tokenStore.removeAccessToken(access);
     }
 
+    @GetMapping("/users/{name}/shapes")
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    public List<Shape> getSavedShapesForKid(@PathVariable String name) {
+        return shapeService.listSaveShapesForKid(name);
+    }
 
+    @PostMapping("/users/{name}/shapes")
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    public Shape createShapeForKid(@PathVariable String name, @RequestBody Shape shape) {
+        return shapeService.createShapeForKid(name, shape);
+    }
+
+    @PutMapping("/users/{name}/shapes")
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    public Shape updateShapeForKid(@PathVariable String name, @RequestBody Shape shape) {
+        return shapeService.updateShapeForKid(name, shape);
+    }
+
+    @DeleteMapping("/users/{name}/shapes/{id}")
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    public void deleteShapeForKid(@PathVariable String name, @PathVariable String id) {
+        return shapeService.deleteShapeForKid(name, id);
+    }
+    
 }

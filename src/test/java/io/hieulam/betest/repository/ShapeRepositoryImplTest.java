@@ -37,7 +37,7 @@ public class ShapeRepositoryImplTest {
 
         Shape shape = new Shape();
         shape.setId(UUID.randomUUID());
-        shape.setAttributes(Arrays.asList(new Attribute(), new Attribute()));
+        //shape.setAttributes(Arrays.asList(new Attribute(), new Attribute()));
         shapeRepository.saveShape(shape);
 
         shapes = shapeRepository.getShapes();
@@ -51,7 +51,7 @@ public class ShapeRepositoryImplTest {
 
         Shape shape = new Shape();
         shape.setId(UUID.randomUUID());
-        shape.setAttributes(Arrays.asList(new Attribute(), new Attribute()));
+        //shape.setAttributes(Arrays.asList(new Attribute(), new Attribute()));
         shapeRepository.saveShape(shape);
 
         shapes = shapeRepository.getShapes();
