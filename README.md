@@ -39,7 +39,8 @@ But I just provide the ability for kid to query saved shapes created by admin.
 But I have document the approach I would use in the code. I think I would  use an expression evaluator to calculate the 
 area based on the formula and the shape attributes. Same for conditions, I would also use expression evaluator to evaluate
 and for each conditions evaluate to true, I would add the corresponding shape categories into the shape.
-- The data access code in UserServiceImpl should be refactor into UserRepository. I should have done this from the beginning. 
+- The data access code in UserServiceImpl should be refactor into UserRepository. I should have done this from the beginning.
+- Data validation is not fully implemented. Should provide more thorough validation.  
 
 Feedback: 
 - The test is challenging and time-consuming. I personally think that the test should be designed to test the candidate ability
