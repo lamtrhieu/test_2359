@@ -22,7 +22,7 @@ public class UserController {
     private TokenStore tokenStore;
 
     @GetMapping("/users/{username}")
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    @PreAuthorize("hasRole('ROLE_ADMIN') or hasRole('ROLE_USER')")
     public User user(@PathVariable String username) {
         User user = userService.findUserByUsername(username);
         return user;
