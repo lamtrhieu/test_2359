@@ -25,7 +25,7 @@ public class ShapeRepositoryImplTest {
     @Test
     public void shouldGetAllShapeCategories() {
         List<ShapeCategory> result = shapeRepository.getAllShapeCategories();
-        assertThat(result.size()).isEqualTo(3);
+        assertThat(result.size()).isEqualTo(5);
 
     }
 
@@ -61,7 +61,7 @@ public class ShapeRepositoryImplTest {
     public void shouldAddShapeCategory() {
 
         List<ShapeCategory> allShapeCategories = shapeRepository.getAllShapeCategories();
-        assertThat(allShapeCategories.size()).isEqualTo(3);
+        assertThat(allShapeCategories.size()).isEqualTo(5);
 
         List<Attribute> requirements = Arrays.asList(new Attribute(), new Attribute());
         ShapeCategory category = new ShapeCategory("New Category", requirements);
@@ -70,7 +70,7 @@ public class ShapeRepositoryImplTest {
 
         allShapeCategories = shapeRepository.getAllShapeCategories();
 
-        assertThat(allShapeCategories.size()).isEqualTo(4);
+        assertThat(allShapeCategories.size()).isEqualTo(6);
     }
 
     @Test

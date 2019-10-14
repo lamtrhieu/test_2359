@@ -38,7 +38,7 @@ public class AdminController {
     }
 
     @DeleteMapping("/logout")
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    @PreAuthorize("hasRole('ROLE_ADMIN') or hasRole('ROLE_USER')")
     public void logout(@RequestBody String token) {
         OAuth2AccessToken access = tokenStore.readAccessToken(token);
         tokenStore.removeAccessToken(access);

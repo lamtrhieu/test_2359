@@ -21,7 +21,7 @@ public class UserController {
     @Autowired
     private TokenStore tokenStore;
 
-    @GetMapping("/api/user/{username}")
+    @GetMapping("/users/{username}")
     @PreAuthorize("hasRole('ROLE_ADMIN')")
     public User user(@PathVariable String username) {
         User user = userService.findUserByUsername(username);
